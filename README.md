@@ -3,9 +3,9 @@
 A web tool that calculates flood risk scores using elevation, water proximity, population density, drainage quality, and region factors.
 
 ## Files
-- index.html - Main application
-- style.css - Styling  
-- script.js - Risk scoring logic
+index.html The structural framework, containing input sliders, zone cards, and the result display.
+style.css The visual layer, featuring a color-coded risk meter and a modern, user-friendly layout.
+script.js The logic engine that handles weighted calculations and DOM manipulation.
 
 ## How to Use
 1.Download: Save index.html, style.css, and script.js into a single folder.
