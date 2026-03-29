@@ -4,7 +4,9 @@ A web tool that calculates flood risk scores using elevation, water proximity, p
 
 ## Files
 index.html The structural framework, containing input sliders, zone cards, and the result display.
+
 style.css The visual layer, featuring a color-coded risk meter and a modern, user-friendly layout.
+
 script.js The logic engine that handles weighted calculations and DOM manipulation.
 
 ## How to Use
