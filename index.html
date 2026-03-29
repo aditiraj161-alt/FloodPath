@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FloodPath — Flood Vulnerability Assessment</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8 2 4 6 4 11c0 6 8 13 8 13s8-7 8-13c0-5-4-9-8-9zm0 12a3 3 0 110-6 3 3 0 010 6z"/></svg></div>
+    <span class="nav-logo-text">FloodPath</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">Try it</a></li>
+    <li><a href="#usecases">Use cases</a></li>
+    <li><a href="#cta" class="nav-cta">Get access</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge"><div class="hero-badge-dot"></div>Live risk intelligence</div>
+      <h1>Know your <span class="accent">flood risk.</span><span class="line2">Before it's too late.</span></h1>
+      <p class="hero-sub">FloodPath gives planners instant vulnerability scores for any zone — powered by elevation, proximity analysis, and population density.</p>
+      <div class="hero-actions">
+        <a href="#how" class="btn-primary">Try the demo →</a>
+        <a href="#features" class="btn-outline">See features</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hero-stat-num">3</div><div class="hero-stat-label">Risk tiers</div></div>
+        <div><div class="hero-stat-num">5+</div><div class="hero-stat-label">Scored inputs</div></div>
+        <div><div class="hero-stat-num" id="hero-count">2,847</div><div class="hero-stat-label">Zones assessed</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="zone-ticker-label">Live zone feed — click to load into demo</div>
+      <div id="zone-cards"></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Elevation Analysis</span><span class="marquee-dot">●</span><span>Water Proximity</span><span class="marquee-dot">●</span><span>Population Density</span><span class="marquee-dot">●</span><span>Drainage Quality</span><span class="marquee-dot">●</span><span>Urban Risk Scoring</span><span class="marquee-dot">●</span><span>Rural Assessment</span><span class="marquee-dot">●</span><span>Zone Classification</span><span class="marquee-dot">●</span>
+    <span>Elevation Analysis</span><span class="marquee-dot">●</span><span>Water Proximity</span><span class="marquee-dot">●</span><span>Population Density</span><span class="marquee-dot">●</span><span>Drainage Quality</span><span class="marquee-dot">●</span><span>Urban Risk Scoring</span><span class="marquee-dot">●</span><span>Rural Assessment</span><span class="marquee-dot">●</span><span>Zone Classification</span><span class="marquee-dot">●</span>
+  </div>
+</div>
+
+<section id="features">
+  <div class="section-tag reveal">Features</div>
+  <h2 class="section-title reveal">Everything planners need to <em>act fast.</em></h2>
+  <p class="reveal" style="font-size:14px;color:var(--ink-light);margin-top:0.5rem">Click any feature card to explore it interactively.</p>
+  <div class="features-grid">
+    <div class="feature-card reveal" onclick="toggleFeature(0)">
+      <div class="feature-icon icon-blue">🗺️</div>
+      <div class="feature-name">Zone classification</div>
+      <p class="feature-desc">Instantly classify any area as High, Medium, or Low risk using a weighted scoring algorithm across geographic and demographic inputs.</p>
+      <div class="feature-hint">Click to explore →</div>
+      <div class="feature-num">01</div>
+    </div>
+    <div class="feature-card reveal reveal-delay-1" onclick="toggleFeature(1)">
+      <div class="feature-icon icon-cyan">📊</div>
+      <div class="feature-name">Multi-factor scoring</div>
+      <p class="feature-desc">Five key inputs combine into a precise 0–100 risk score. Elevation and proximity carry the most weight as the strongest physical predictors.</p>
+      <div class="feature-hint">Click to explore →</div>
+      <div class="feature-num">02</div>
+    </div>
+    <div class="feature-card reveal reveal-delay-2" onclick="toggleFeature(2)">
+      <div class="feature-icon icon-green">🏙️</div>
+      <div class="feature-name">Urban vs rural modes</div>
+      <p class="feature-desc">Separate risk models for urban and rural regions account for impervious surfaces, drainage infrastructure, and soil permeability.</p>
+      <div class="feature-hint">Click to explore →</div>
+      <div class="feature-num">03</div>
+    </div>
+  </div>
+
+  <div class="feature-detail" id="fd-0">
+    <div class="fd-inner">
+      <div>
+        <div class="fd-title">How zone classification works</div>
+        <p class="fd-body">FloodPath maps a weighted sum of inputs onto one of three tiers. High risk (≥60) triggers immediate action alerts. Medium (35–59) surfaces drainage recommendations. Low (&lt;35) confirms baseline safety.</p>
+        <p class="fd-body">Thresholds are calibrated against historical flood event data — each boundary represents a meaningful jump in expected damage probability.</p>
+      </div>
+      <div class="fd-visual">
+        <div class="fd-vl">Drag to test score → classification</div>
+        <input type="range" min="0" max="100" value="72" id="fd0-score" oninput="updateFd0()" style="width:100%;accent-color:#0057FF;margin-bottom:0.75rem">
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,0.25);margin-bottom:1.25rem"><span>0 — Low</span><span>35</span><span>60</span><span>100 — High</span></div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:6px">Score: <span id="fd0-val" style="color:white;font-weight:700;font-family:var(--sans)">72</span> / 100</div>
+        <div style="font-family:var(--sans);font-size:38px;font-weight:800;letter-spacing:-1px;margin-bottom:6px;transition:color 0.3s" id="fd0-result">HIGH RISK</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:1rem" id="fd0-desc">Immediate action required for this zone.</div>
+        <div style="height:5px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden"><div id="fd0-bar" style="height:100%;border-radius:3px;background:#FF3B3B;width:72%;transition:width 0.4s,background 0.4s"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-detail" id="fd-1">
+    <div class="fd-inner">
+      <div>
+        <div class="fd-title">The scoring breakdown</div>
+        <p class="fd-body">Each factor contributes a weighted sub-score. Elevation and proximity carry the most weight since they're the strongest physical predictors of flood exposure.</p>
+        <p class="fd-body">Drainage and region-specific factors fine-tune the score, letting FloodPath distinguish two zones with identical geography but different infrastructure.</p>
+      </div>
+      <div class="fd-visual">
+        <div class="fd-vl">Factor weights (max points)</div>
+        <div id="fd1-bars"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-detail" id="fd-2">
+    <div class="fd-inner">
+      <div>
+        <div class="fd-title">Urban vs rural risk logic</div>
+        <p class="fd-body">Urban zones use <strong style="color:var(--ink)">impervious surface coverage</strong> — the share of concrete and asphalt that blocks water absorption. High coverage = more runoff = greater flood exposure.</p>
+        <p class="fd-body">Rural zones use <strong style="color:var(--ink)">soil permeability</strong> — how quickly the ground absorbs water. Low permeability (clay soils) means runoff builds just like urban concrete.</p>
+      </div>
+      <div class="fd-visual">
+        <div class="fd-vl">Toggle mode and drag the slider</div>
+        <div style="display:flex;gap:0;border:1px solid rgba(255,255,255,0.15);border-radius:8px;overflow:hidden;margin-bottom:1.25rem">
+          <button onclick="setFd2('urban')" id="fd2-btn-urban" style="flex:1;padding:10px;background:#0057FF;color:white;border:none;font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer;transition:all 0.15s">Urban</button>
+          <button onclick="setFd2('rural')" id="fd2-btn-rural" style="flex:1;padding:10px;background:transparent;color:rgba(255,255,255,0.4);border:none;font-family:var(--sans);font-size:13px;font-weight:700;cursor:pointer;transition:all 0.15s">Rural</button>
+        </div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:8px" id="fd2-factor-label">Impervious surface coverage</div>
+        <input type="range" min="0" max="100" value="65" id="fd2-slider" oninput="updateFd2()" style="width:100%;accent-color:#0057FF;margin-bottom:0.5rem">
+        <div style="display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,0.25);margin-bottom:1.25rem">
+          <span id="fd2-lo">Low coverage → safer</span><span id="fd2-hi">High coverage → riskier</span>
+        </div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.4)">Factor contribution: <span id="fd2-score" style="color:white;font-weight:800;font-family:var(--sans);font-size:22px">7</span><span style="font-size:13px;color:rgba(255,255,255,0.3)"> / 10 pts</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="how-intro reveal">
+    <div class="section-tag">Try it live</div>
+    <h2 class="section-title">Enter data. Get your <em>risk score.</em></h2>
+    <p style="font-size:16px;color:var(--ink-mid);margin-top:0.75rem">Move any slider — your assessment updates instantly. Or click a zone card in the hero to load real data.</p>
+  </div>
+  <div class="demo-wrap reveal">
+    <div class="demo-inputs">
+      <div class="demo-label">Zone inputs</div>
+      <div class="type-toggle">
+        <button class="type-btn active" id="btn-urban" onclick="setType('urban')">Urban region</button>
+        <button class="type-btn" id="btn-rural" onclick="setType('rural')">Rural region</button>
+      </div>
+      <div class="field">
+        <div class="field-label">Elevation (m) <span id="lbl-elev">30m</span></div>
+        <input type="range" min="0" max="200" value="30" id="elev" oninput="syncLbl('elev',this.value+'m');liveAssess()">
+      </div>
+      <div class="field">
+        <div class="field-label">Distance to water (km) <span id="lbl-dist">8.0km</span></div>
+        <input type="range" min="0" max="50" value="8" step="0.5" id="dist" oninput="syncLbl('dist',parseFloat(this.value).toFixed(1)+'km');liveAssess()">
+      </div>
+      <div class="field">
+        <div class="field-label">Population density (per km²) <span id="lbl-dens">2,000</span></div>
+        <input type="range" min="0" max="10000" value="2000" step="50" id="dens" oninput="syncLbl('dens',Number(this.value).toLocaleString());liveAssess()">
+      </div>
+      <div class="field">
+        <div class="field-label">Drainage quality</div>
+        <select id="drain" onchange="liveAssess()">
+          <option value="poor">Poor — minimal drainage</option>
+          <option value="moderate" selected>Moderate — basic systems</option>
+          <option value="good">Good — well maintained</option>
+        </select>
+      </div>
+      <div class="field">
+        <div class="field-label"><span id="extra-lbl">Impervious surface (%)</span> <span id="lbl-extra">60%</span></div>
+        <input type="range" min="0" max="100" value="60" id="extra" oninput="syncLbl('extra',this.value+'%');liveAssess()">
+      </div>
+    </div>
+    <div class="demo-output">
+      <div class="demo-label">Risk assessment — live</div>
+      <div id="out-ph" class="out-placeholder">
+        <div class="out-placeholder-icon">🌊</div>
+        <p style="font-size:14px">Move any slider to see results</p>
+      </div>
+      <div id="out-res" style="display:none">
+        <div class="out-risk-label">Classification</div>
+        <div class="out-risk-level" id="out-level">—</div>
+        <div class="out-risk-type" id="out-type">Urban Region</div>
+        <div class="out-score-row"><span>Risk score</span><span id="out-sv">0 / 100</span></div>
+        <div class="out-bar-bg"><div class="out-bar-fill" id="out-bar" style="width:0%"></div></div>
+        <div class="out-factors" id="out-factors"></div>
+        <div class="out-note" id="out-note"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="usecases">
+  <div class="section-tag reveal">Use cases</div>
+  <h2 class="section-title reveal">Built for the people <em>making decisions.</em></h2>
+  <p class="reveal" style="font-size:14px;color:var(--ink-light);margin-top:0.5rem;margin-bottom:0">Click a persona to see a real scenario with data.</p>
+  <div class="uc-grid" style="margin-top:2rem">
+    <div class="uc-card reveal" onclick="toggleUC(0)">
+      <span class="uc-emoji">🏛️</span>
+      <div class="uc-title">Town & city planners</div>
+      <p class="uc-desc">Evaluate proposed development zones before approving permits. Identify high-risk areas needing flood-resilient design requirements.</p>
+      <div class="uc-tag">See real scenario →</div>
+    </div>
+    <div class="uc-card reveal reveal-delay-1" onclick="toggleUC(1)">
+      <span class="uc-emoji">🚒</span>
+      <div class="uc-title">Emergency services</div>
+      <p class="uc-desc">Pre-identify vulnerable zones before storm season. Prioritize resource allocation and evacuation planning based on objective risk scores.</p>
+      <div class="uc-tag">See real scenario →</div>
+    </div>
+    <div class="uc-scenario" id="ucs-0">
+      <div class="ucs-inner">
+        <div>
+          <div class="ucs-title">Scenario: New residential development proposal</div>
+          <p class="ucs-body">A developer submits plans for 400 residential units on a low-lying parcel near the Lakefront district. The planning team runs a FloodPath assessment before the permit review meeting.</p>
+          <p class="ucs-body">Result: <strong>HIGH risk</strong> — score 71/100 due to low elevation, 0.8km from a river, and poor municipal drainage. The permit is conditionally approved with mandatory flood barriers and a 1.5m raised foundation minimum.</p>
+        </div>
+        <div class="ucs-data">
+          <div class="ucs-row"><span class="ucs-key">Elevation</span><span class="ucs-val">8m</span></div>
+          <div class="ucs-row"><span class="ucs-key">Distance to river</span><span class="ucs-val">0.8 km</span></div>
+          <div class="ucs-row"><span class="ucs-key">Projected residents</span><span class="ucs-val">1,200 people</span></div>
+          <div class="ucs-row"><span class="ucs-key">Drainage quality</span><span class="ucs-val">Poor</span></div>
+          <div class="ucs-row"><span class="ucs-key">Impervious surface</span><span class="ucs-val">72%</span></div>
+          <div class="ucs-result high">⚠ HIGH RISK — Score: 71/100</div>
+        </div>
+      </div>
+    </div>
+    <div class="uc-scenario" id="ucs-1">
+      <div class="ucs-inner">
+        <div>
+          <div class="ucs-title">Scenario: Pre-monsoon resource staging</div>
+          <p class="ucs-body">With monsoon season 6 weeks away, the emergency management team runs FloodPath across all 12 municipal zones to determine where to pre-position pumps, sandbags, and rapid-response crews.</p>
+          <p class="ucs-body">Zones 3, 7, and 11 score HIGH. Emergency coordinators allocate 60% of flood-response assets to those three zones, reducing average response time by an estimated 18 minutes.</p>
+        </div>
+        <div class="ucs-data">
+          <div class="ucs-row"><span class="ucs-key">Zones assessed</span><span class="ucs-val">12 municipal zones</span></div>
+          <div class="ucs-row"><span class="ucs-key">HIGH risk zones</span><span class="ucs-val">3 (zones 3, 7, 11)</span></div>
+          <div class="ucs-row"><span class="ucs-key">MEDIUM risk zones</span><span class="ucs-val">5</span></div>
+          <div class="ucs-row"><span class="ucs-key">LOW risk zones</span><span class="ucs-val">4</span></div>
+          <div class="ucs-row"><span class="ucs-key">Assets pre-deployed to HIGH</span><span class="ucs-val">60%</span></div>
+          <div class="ucs-result med">⚡ 3 HIGH zones flagged — assets deployed</div>
+        </div>
+      </div>
+    </div>
+    <div class="uc-card reveal reveal-delay-2" onclick="toggleUC(2)">
+      <span class="uc-emoji">🏗️</span>
+      <div class="uc-title">Infrastructure teams</div>
+      <p class="uc-desc">Assess flood exposure for roads, bridges, utilities, and public buildings. Feed risk data into long-term infrastructure investment planning.</p>
+      <div class="uc-tag">See real scenario →</div>
+    </div>
+    <div class="uc-card reveal reveal-delay-3" onclick="toggleUC(3)">
+      <span class="uc-emoji">🌍</span>
+      <div class="uc-title">Climate researchers</div>
+      <p class="uc-desc">Model how changing rainfall patterns and sea-level projections shift risk classifications across regions over time.</p>
+      <div class="uc-tag">See real scenario →</div>
+    </div>
+    <div class="uc-scenario" id="ucs-2">
+      <div class="ucs-inner">
+        <div>
+          <div class="ucs-title">Scenario: Bridge inspection prioritisation</div>
+          <p class="ucs-body">The infrastructure team needs to prioritise which of 8 bridges get reinforced before the next budget cycle. FloodPath scores each bridge's surrounding zone. The 2 bridges in HIGH zones are fast-tracked for structural assessment.</p>
+          <p class="ucs-body">The team avoids a costly blanket-inspection programme by targeting only the genuinely vulnerable structures — saving an estimated ₹2.4 crore in unnecessary inspections.</p>
+        </div>
+        <div class="ucs-data">
+          <div class="ucs-row"><span class="ucs-key">Bridges assessed</span><span class="ucs-val">8 structures</span></div>
+          <div class="ucs-row"><span class="ucs-key">HIGH risk bridges</span><span class="ucs-val">2 — fast-tracked</span></div>
+          <div class="ucs-row"><span class="ucs-key">MEDIUM risk bridges</span><span class="ucs-val">3 — monitored</span></div>
+          <div class="ucs-row"><span class="ucs-key">LOW risk bridges</span><span class="ucs-val">3 — baseline check</span></div>
+          <div class="ucs-row"><span class="ucs-key">Estimated savings</span><span class="ucs-val">₹2.4 crore</span></div>
+          <div class="ucs-result low">✓ Targeted assessment — efficient spend</div>
+        </div>
+      </div>
+    </div>
+    <div class="uc-scenario" id="ucs-3">
+      <div class="ucs-inner">
+        <div>
+          <div class="ucs-title">Scenario: 2040 sea-level projection modelling</div>
+          <p class="ucs-body">A research team models how IPCC sea-level rise projections for 2040 (+0.3m) would change FloodPath scores across a coastal district. They reduce elevation inputs by 30cm across all coastal zones and re-run assessments.</p>
+          <p class="ucs-body">Result: 4 currently LOW-risk zones flip to MEDIUM, and 2 MEDIUM zones become HIGH. Findings published in a policy brief recommending revised coastal setback regulations.</p>
+        </div>
+        <div class="ucs-data">
+          <div class="ucs-row"><span class="ucs-key">Sea-level scenario</span><span class="ucs-val">+0.3m by 2040</span></div>
+          <div class="ucs-row"><span class="ucs-key">Zones reclassified</span><span class="ucs-val">6 of 14 coastal zones</span></div>
+          <div class="ucs-row"><span class="ucs-key">LOW → MEDIUM flips</span><span class="ucs-val">4 zones</span></div>
+          <div class="ucs-row"><span class="ucs-key">MEDIUM → HIGH flips</span><span class="ucs-val">2 zones</span></div>
+          <div class="ucs-row"><span class="ucs-key">Policy output</span><span class="ucs-val">Revised coastal setbacks</span></div>
+          <div class="ucs-result med">📊 6 zones reclassified under 2040 scenario</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="cta-content">
+    <h2 class="cta-title reveal">Ready to assess<br>your zones?</h2>
+    <p class="cta-sub reveal">Get early access — we'll notify you when FloodPath is ready for your region.</p>
+    <div class="reveal">
+      <div class="cta-form">
+        <input class="cta-input" type="email" id="cta-email" placeholder="your@email.com" oninput="document.getElementById('cta-fb').textContent=''">
+        <button class="cta-submit" onclick="submitCta()">Get access →</button>
+      </div>
+      <div class="cta-feedback" id="cta-fb"></div>
+      <div class="cta-perks">
+        <span class="cta-perk">Free during beta</span>
+        <span class="cta-perk">No credit card</span>
+        <span class="cta-perk">Cancel anytime</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Flood<span>Path</span></div>
+  <ul class="footer-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how">Try it</a></li>
+    <li><a href="#usecases">Use cases</a></li>
+    <li><a href="#">GitHub</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 FloodPath. Built for smarter planning.</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
