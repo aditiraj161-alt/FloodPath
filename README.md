@@ -1,7 +1,3 @@
-Based on the files and project title shown in your screenshot, here is a detailed, professional `README.md` template you can use for your **FloodPath** repository.
-
------
-
 # FloodPath - Flood Vulnerability Assessment
 
 **FloodPath** is an interactive web-based tool designed to assess and calculate flood risk scores for urban and rural planning. By analyzing key environmental and demographic factors, it provides users with a data-driven vulnerability score to assist in disaster management and infrastructure development.
