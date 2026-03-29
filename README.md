@@ -2,6 +2,15 @@
 
 A web tool that calculates flood risk scores using elevation, water proximity, population density, drainage quality, and region factors.
 
+Features
+Dynamic Risk Scoring: Calculates a vulnerability score (0-100) based on weighted parameters.
+
+Real-time Updates: Adjust sliders for elevation, population, and drainage to see the risk level change instantly.
+
+Zone Presets: Quick-select cards to simulate specific environments like "Coastal Cities" or "Low-lying Basins."
+
+Responsive Design: Fully functional on both desktop and mobile browsers.
+
 ## Files
 index.html The structural framework, containing input sliders, zone cards, and the result display.
 
