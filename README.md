@@ -8,7 +8,7 @@ A web tool that calculates flood risk scores using elevation, water proximity, p
 - script.js - Risk scoring logic
 
 ## How to Use
-1. Download: Save index.html, style.css, and script.js into a single folder.
+1.Download: Save index.html, style.css, and script.js into a single folder.
 
 2.Launch: Open index.html in any modern web browser (Chrome, Firefox, Safari, Edge).
 
