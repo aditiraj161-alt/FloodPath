@@ -8,9 +8,13 @@ A web tool that calculates flood risk scores using elevation, water proximity, p
 - script.js - Risk scoring logic
 
 ## How to Use
-1. Download all 3 files to the same folder
-2. Open index.html in any web browser
-3. Click any zone card or adjust sliders to see risk score update instantly
+1. Download: Save index.html, style.css, and script.js into a single folder.
+
+2.Launch: Open index.html in any modern web browser (Chrome, Firefox, Safari, Edge).
+
+3.Interact: * Click on a Zone Card to load a preset scenario.
+Manually adjust the Sliders to customize the environmental factors.
+Observe the Risk Meter to see the immediate vulnerability assessment.
 
 ## Author
 Aditi Raj - VITyarthi Course Project
